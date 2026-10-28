@@ -4949,3 +4949,14 @@ footer {
   content-visibility: auto;
   contain-intrinsic-size: auto 500px;
 }
+
+/* Enhancement #7972: Form Container Focus Highlights using :focus-within */
+
+/* Search container / Form wrapper highlight */
+.search-container:focus-within,
+.newsletter-form:focus-within,
+.coupon-input-group:focus-within {
+  border-color: #088178 !important; /* Brand accent color */
+  box-shadow: 0 0 8px rgba(8, 129, 120, 0.4) !important; /* Soft glowing effect */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
