@@ -4960,3 +4960,35 @@ footer {
   box-shadow: 0 0 8px rgba(8, 129, 120, 0.4) !important; /* Soft glowing effect */
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
+/* Back to Top Floating Action Button #7971 */
+.back-to-top-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: #088178; /* Brand accent color */
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+}
+
+.back-to-top-btn.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.back-to-top-btn:hover {
+  background-color: #06655e;
+  transform: translateY(-3px);
+}
