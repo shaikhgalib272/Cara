@@ -5026,3 +5026,20 @@ footer {
 .progress-bar-fill.success {
   background-color: #28a745; /* Success green */
 }
+
+.skip-to-footer {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #000;
+  color: #fff;
+  padding: 8px 16px;
+  z-index: 1000;
+  transition: top 0.3s ease;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.skip-to-footer:focus {
+  top: 0;
+}

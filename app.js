@@ -2938,3 +2938,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  // 1. "Skip to footer" link dynamically create karna
+  if (!document.querySelector('.skip-to-footer')) {
+    const skipFooterLink = document.createElement('a');
+    skipFooterLink.href = '#site-footer';
+    skipFooterLink.className = 'skip-link skip-to-footer';
+    skipFooterLink.textContent = 'Skip to footer';
+    
+    // Body ke bilkul shuru mein insert karna (Skip to main content ke baad)
+    document.body.insertBefore(skipFooterLink, document.body.firstChild);
+  }
+
+  // 2. Ensure karna ki sabhi pages ke main <footer> par id="site-footer" ho
+  const footerElement = document.querySelector('footer');
+  if (footerElement && !footerElement.id) {
+    footerElement.id = 'site-footer';
+  }
+});
