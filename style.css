@@ -5043,3 +5043,55 @@ footer {
 .skip-to-footer:focus {
   top: 0;
 }
+
+/* 1. Muted / Gray Text Fixes (Light Gray to Darker Slate for 4.5:1 Ratio) */
+p, .text-muted, .subtitle {
+    color: #4a5568; /* Previously light gray (#777 / #888) -> Updated to high-contrast dark gray */
+}
+
+/* 2. Form Field Placeholders Fix */
+input::placeholder,
+textarea::placeholder {
+    color: #595959; /* Ensures placeholder text meets accessibility standards on white backgrounds */
+    opacity: 1;
+}
+
+/* 3. Button Text & Background Contrast */
+.button, button, .btn-primary {
+    background-color: #088178; /* Existing brand color */
+    color: #ffffff; /* Stark white text for high contrast */
+    font-weight: 600;
+}
+
+/* 4. Footer Link States */
+footer a {
+    color: #222222; /* High contrast against light footer background */
+}
+
+footer a:hover {
+    color: #088178;
+}
+
+/* 5. Hero Banner / Overlay Text Readability */
+.hero-banner {
+    position: relative;
+    background-image: url('banner.jpg');
+}
+
+/* Add a semi-transparent dark overlay behind text on images */
+.hero-banner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Ensures text readability over any background image */
+    z-index: 1;
+}
+
+.hero-banner .hero-text {
+    position: relative;
+    z-index: 2;
+    color: #ffffff;
+}
