@@ -2957,3 +2957,34 @@ document.addEventListener('DOMContentLoaded', () => {
     footerElement.id = 'site-footer';
   }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const orderBumpCheckbox = document.getElementById('orderBumpCheckbox');
+  
+  if (!orderBumpCheckbox) return;
+
+  const subtotalElement = document.getElementById('cartSubtotal');
+  const totalElement = document.getElementById('cartTotal');
+
+  const bumpPrice = parseFloat(orderBumpCheckbox.getAttribute('data-bump-price')) || 5.00;
+
+  const parseCurrency = (el) => {
+    if (!el) return 0;
+    return parseFloat(el.textContent.replace(/[^0-9.-]+/g, "")) || 0;
+  };
+
+  orderBumpCheckbox.addEventListener('change', (e) => {
+    const currentSubtotal = parseCurrency(subtotalElement);
+    const currentTotal = parseCurrency(totalElement);
+
+    if (e.target.checked) {
+      if (subtotalElement) subtotalElement.textContent = `$${(currentSubtotal + bumpPrice).toFixed(2)}`;
+      if (totalElement) totalElement.textContent = `$${(currentTotal + bumpPrice).toFixed(2)}`;
+      e.target.closest('.order-bump-container')?.classList.add('bg-indigo-100', 'border-indigo-600');
+    } else {
+      if (subtotalElement) subtotalElement.textContent = `$${Math.max(0, currentSubtotal - bumpPrice).toFixed(2)}`;
+      if (totalElement) totalElement.textContent = `$${Math.max(0, currentTotal - bumpPrice).toFixed(2)}`;
+      e.target.closest('.order-bump-container')?.classList.remove('bg-indigo-100', 'border-indigo-600');
+    }
+  });
+});
